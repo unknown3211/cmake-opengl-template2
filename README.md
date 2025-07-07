@@ -1,2 +1,5 @@
 # cmake-opengl-template2
-Cmake Open GL Starter Template
+
+CMake Open GL Starter Template
+
+Very Easy To Use With Custom Functions Like OnStart, OnUpdate, OnShutdown Similar To How Game Engines Are Setup

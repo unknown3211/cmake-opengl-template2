@@ -1,0 +1,3 @@
+* to use stuff in resources - RESOURCES_PATH "filename.wav"
+* header files go inside include folder
+* cpp files go inside src folder
