@@ -12,7 +12,7 @@ public:
 	bool vSync;
 	GLFWwindow* GetGLFWwindow() const;
 	void Start(void(*start)());
-	void CreateWindow(int width, int height, const char* title, bool vSync, bool dev);
+	void CreateWindow(int width, int height, const char* title, bool vSync, bool legacy);
 	void Update(void(*update)());
 	void Shutdown(void(*shutdown)());
 	void SetBackgroundColor(float r, float g, float b, float a);

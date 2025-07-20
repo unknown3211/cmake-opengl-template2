@@ -1,14 +1,15 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "Engine/engine.h"
+#include "Engine/window.h"
+#include "Engine/input.h"
 
 void Window::Start(void(*start)())
 {
 	start();
 }
 
-void Window::CreateWindow(int width, int height, const char* title, bool vSync, bool dev)
+void Window::CreateWindow(int width, int height, const char* title, bool vSync, bool legacy)
 {
     if (!glfwInit())
     {
@@ -16,11 +17,17 @@ void Window::CreateWindow(int width, int height, const char* title, bool vSync, 
         return;
     }
 
-    if (!dev)
+    if (!legacy)
     {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    }
+    else 
+    {
+       // Allows Usage Of Legacy OpenGL Code // 
+       glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+       glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     }
 
 #ifdef __APPLE__
