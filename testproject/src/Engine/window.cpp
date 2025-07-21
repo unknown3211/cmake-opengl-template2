@@ -26,8 +26,8 @@ void Window::CreateWindow(int width, int height, const char* title, bool vSync, 
     else 
     {
        // Allows Usage Of Legacy OpenGL Code // 
-       glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-       glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+       glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+       glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     }
 
 #ifdef __APPLE__
