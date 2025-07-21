@@ -1,31 +1,25 @@
 #include "Application/application.h"
 #include "Engine/window.h"
+#include "Engine/shapes.h"
 
 Window window;
 
-static void DrawLegacyTriangle()
-{
-	glBegin(GL_POLYGON);
-	glColor3f(1.0f, 0.0f, 0.0f); glVertex3f(0.0f, 1.0f, 0.0f);
-	glColor3f(0.0f, 1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 0.0f);
-	glColor3f(0.0f, 0.0f, 0.0f); glVertex3f(1.0f, -1.0f, 0.0f);
-	glEnd();
-}
-
 static void OnStart()
 {
-	window.CreateWindow(1200, 720, "Open GL Application Template Starter", false, true); // currently using Legacy open gl code set true to false if want to use modern
+	window.CreateWindow(1200, 720, "Open GL Application Template Starter", false, false);
 	window.SetBackgroundColor(0.2f, 0.3f, 0.3f, 1.0f);
+
+	LoadTriangle();
 }
 
 static void OnUpdate()
 {
-  DrawLegacyTriangle();
+	UpdateTriangle();
 }
 
 static void OnShutdown()
 {
-
+	ShutdownTriangle();
 }
 
 void Application::Init()
