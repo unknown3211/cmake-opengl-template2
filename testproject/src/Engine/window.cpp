@@ -2,18 +2,20 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Engine/window.h"
-#include "Engine/input.h"
+#include "Application/input.h"
+#include "logs.h"
 
 void Window::Start(void(*start)())
 {
 	start();
+    Log(info, "Application Started !");
 }
 
 void Window::CreateWindow(int width, int height, const char* title, bool vSync, bool legacy)
 {
     if (!glfwInit())
     {
-        std::cout << "Failed To Initialize GLFW" << std::endl;
+        Log(error, "Failed To Initialize GLFW !");
         return;
     }
 
@@ -40,7 +42,7 @@ void Window::CreateWindow(int width, int height, const char* title, bool vSync, 
     window = glfwCreateWindow(width, height, title, NULL, NULL);
     if (window == NULL)
     {
-        std::cout << "Failed To Initialize GLFW Window" << std::endl;
+        Log(error, "Failed To Initialize GLFW Window !");
         glfwTerminate();
         return;
     }
@@ -48,7 +50,7 @@ void Window::CreateWindow(int width, int height, const char* title, bool vSync, 
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
-        std::cout << "Failed To Load GLAD" << std::endl;
+        Log(error, "Failed To Initialize GLAD !");
         glfwDestroyWindow(window);
         glfwTerminate();
         return;
@@ -81,6 +83,7 @@ void Window::Shutdown(void(*shutdown)())
 	shutdown();
 	glfwDestroyWindow(window);
 	glfwTerminate();
+    Log(info, "Application Shutdown Successfully !");
 }
 
 void Window::SetBackgroundColor(float r, float g, float b, float a)
