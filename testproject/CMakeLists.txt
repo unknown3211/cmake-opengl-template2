@@ -5,8 +5,9 @@ if(MSVC)
 endif()
 
 project(testproject)
+file(GLOB_RECURSE MY_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
 file(GLOB_RECURSE MY_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
-add_executable(${CMAKE_PROJECT_NAME} "${MY_SOURCES}")
+add_executable(${CMAKE_PROJECT_NAME} "${MY_SOURCES}" ${MY_HEADERS})
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/" "${CMAKE_CURRENT_SOURCE_DIR}/libs/simplelogs/include")
 target_compile_definitions(${CMAKE_PROJECT_NAME} PUBLIC RESOURCES_PATH="${CMAKE_CURRENT_SOURCE_DIR}/resources/")
 
